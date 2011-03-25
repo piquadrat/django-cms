@@ -12,8 +12,17 @@ function hide_iframe(){
 
 jQuery(document).ready(function($) {
 	
-	jQuery.fn.cmsPatchCSRF()
-
+if(typeof(jQuery.fn.cmsPatchCSRF) == 'function') {
+                jQuery.fn.cmsPatchCSRF();
+        } else if(typeof($.fn.cmsPatchCSRF) == 'function') {
+                $.fn.cmsPatchCSRF();
+        } else {
+                $('#cms_toolbar').hide();
+                $('#cms_toolbar_mini').hide();
+                $('#cms_toolbar_spacer').hide();
+                $('#cms_plugin_overlay').hide();
+                $('#cms_plugin_overlay2').hide();
+        }
     jQuery.fn.swapWith = function(to) {
         return this.each(function() {
             var copy_to = $(to).clone(true);
